@@ -1,11 +1,15 @@
 package com.finchsolucoes.testejavafinchsolucoes.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Lanche implements Serializable{
@@ -16,6 +20,9 @@ public class Lanche implements Serializable{
 	private Integer id;
 	private String nome;
 	private Double valor;
+	
+	@OneToMany(mappedBy = "id.lanche", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<ItemLanche> ingredientes = new HashSet<>();
 	
 	public Lanche() {}
 	
@@ -47,5 +54,13 @@ public class Lanche implements Serializable{
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	public Set<ItemLanche> getIngredientes() {
+		return ingredientes;
+	}
+
+	public void setIngredientes(Set<ItemLanche> ingredientes) {
+		this.ingredientes = ingredientes;
 	}
 }

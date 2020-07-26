@@ -20,7 +20,7 @@ public class IngredienteDto implements Serializable{
 	
 	@PositiveOrZero(message = "O valor não pode ser negativo !")
 	private Double preco;
-
+	
 	public IngredienteDto() {}
 
 	public IngredienteDto(Ingrediente obj) {
