@@ -26,13 +26,11 @@ public class IngredienteService {
 	}
 
 	public IngredienteDto findById(Integer id) {
-		Optional<Ingrediente> obj = repository.findById(id);
-
-		if (obj.isPresent())
-			return new IngredienteDto(obj.get());
+		Optional<Ingrediente> optional = repository.findById(id);
+		if (optional.isPresent())
+			return new IngredienteDto(optional.get());
 
 		throw new ObjectNotFoundException(String.format("Ingrediente não encontrado! ID = %d ", id));
-
 	}
 
 	public IngredienteDto insert(IngredienteDto ingredienteDto) {
@@ -57,11 +55,11 @@ public class IngredienteService {
 		}
 	}
 
-	private Ingrediente fromDto(IngredienteDto dto) {
+	public Ingrediente fromDto(IngredienteDto dto) {
 		return new Ingrediente(dto.getId(), dto.getNome(), dto.getPreco());
 	}
 	
-	private IngredienteDto toDto(Ingrediente ingrediente) {
+	public IngredienteDto toDto(Ingrediente ingrediente) {
 		return new IngredienteDto(ingrediente);
 	}
 	

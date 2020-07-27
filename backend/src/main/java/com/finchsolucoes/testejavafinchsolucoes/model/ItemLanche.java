@@ -16,10 +16,10 @@ public class ItemLanche {
 	
 	public ItemLanche() {}
 	
-	public ItemLanche(Ingrediente ingrediente, Lanche lanche, Double valor, Integer quantidade) {
+	public ItemLanche(Ingrediente ingrediente, Lanche lanche, Integer quantidade) {
 		this.id.setIngrediente(ingrediente);
 		this.id.setLanche(lanche);
-		this.valor = valor;
+		this.valor = ingrediente.getPreco() * quantidade;
 		this.quantidade = quantidade;
 	}
 
@@ -41,11 +41,15 @@ public class ItemLanche {
 	}
 
 	public Double getValor() {
-		return valor * quantidade;
+		return valor;
 	}
-
+	
 	public void setValor(Double valor) {
 		this.valor = valor;
+		
+	}
+	public void aplicaDesconto(Double desconto) {
+		this.valor -= desconto;
 	}
 
 	public Integer getQuantidade() {

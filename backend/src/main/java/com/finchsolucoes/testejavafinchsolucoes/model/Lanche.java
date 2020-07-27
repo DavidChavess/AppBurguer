@@ -3,6 +3,7 @@ package com.finchsolucoes.testejavafinchsolucoes.model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.BinaryOperator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,16 +21,16 @@ public class Lanche implements Serializable{
 	private Integer id;
 	private String nome;
 	private Double valor;
+	private double desconto;
 	
 	@OneToMany(mappedBy = "id.lanche", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<ItemLanche> ingredientes = new HashSet<>();
 	
 	public Lanche() {}
 	
-	public Lanche(Integer id, String nome, Double valor) {
+	public Lanche(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
-		this.valor = valor;
 	}
 
 	public Integer getId() {
@@ -51,6 +52,13 @@ public class Lanche implements Serializable{
 	public Double getValor() {
 		return valor;
 	}
+	
+	public void calculaValor() {
+		this.valor = ingredientes
+			.stream()
+			.mapToDouble(ItemLanche::getValor)
+			.sum() - desconto;
+	}
 
 	public void setValor(Double valor) {
 		this.valor = valor;
@@ -62,5 +70,9 @@ public class Lanche implements Serializable{
 
 	public void setIngredientes(Set<ItemLanche> ingredientes) {
 		this.ingredientes = ingredientes;
+	}
+
+	public void adicionaDesconto(double desconto) {
+		this.desconto += desconto;
 	}
 }

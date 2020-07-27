@@ -1,6 +1,5 @@
 package com.finchsolucoes.testejavafinchsolucoes.service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,42 +16,45 @@ import com.finchsolucoes.testejavafinchsolucoes.model.Ingrediente;
 import com.finchsolucoes.testejavafinchsolucoes.model.ItemLanche;
 import com.finchsolucoes.testejavafinchsolucoes.model.Lanche;
 import com.finchsolucoes.testejavafinchsolucoes.repository.LancheRepository;
+import com.finchsolucoes.testejavafinchsolucoes.service.business.promotion.PromocaoEnum;
 
 @Service
 public class LancheService {
 
 	@Autowired
-	private LancheRepository repository;
-
+	private LancheRepository lancheRepository;
 	
+	@Autowired
+	private IngredienteService ingredienteService; 
+		
 	public List<LancheDto> findAll() {
-		return repository.findAll().stream().map(LancheDto::new).collect(Collectors.toList());
+		return lancheRepository.findAll().stream().map(LancheDto::new).collect(Collectors.toList());
 	}
 
 	public LancheDto findById(Integer id) {
-		Optional<Lanche> obj = repository.findById(id);
-
-		if (obj.isPresent())
-			return new LancheDto(obj.get());
-
+		Optional<Lanche> optional = lancheRepository.findById(id);
+		if (optional.isPresent())
+			return new LancheDto(optional.get());
+		
 		throw new ObjectNotFoundException(String.format("Lanche não encontrado! ID = %d ", id));
-
 	}
 
-	public LancheDto insert(LancheDto LancheDto) {
-		return new LancheDto(repository.save(fromDto(LancheDto)));
+	public LancheDto insert(LancheDto lancheDto) {
+		lancheDto.setId(null);
+		return new LancheDto(lancheRepository.save(fromDto(lancheDto)));
 	}
 
 	public LancheDto update(Integer id, LancheDto lancheDto) {
 		LancheDto antigo = findById(id);
+		antigo.setId(id);
 		antigo.setNome(lancheDto.getNome());
 		antigo.setValor(lancheDto.getValor());
-		return toDto(repository.save(fromDto(antigo)));
+		return toDto(lancheRepository.save(fromDto(antigo)));
 	}
 
 	public void delete(Integer id) {
 		try {
-			repository.deleteById(id);
+			lancheRepository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possivel excluir um Lanche, porque tem lanches que contém ele !");
 		} catch (EmptyResultDataAccessException e) {
@@ -61,20 +63,25 @@ public class LancheService {
 	}
 
 	private Lanche fromDto(LancheDto dto) {
-		Lanche lanche = new Lanche(dto.getId(), dto.getNome(), dto.getValor());
+		Lanche lanche = new Lanche(dto.getId(), dto.getNome());
 		lanche.getIngredientes()
 			.addAll(dto.getIngredientes()
 			.stream().map(item -> {
-				Ingrediente ingrediente = new Ingrediente();
-				ingrediente.setId(item.getIngrediente().getId());
-				return new ItemLanche(ingrediente, lanche, 0.0, item.getQuantidade());
-			}).collect(Collectors.toSet()));
-
+				 Ingrediente ingrediente = ingredienteService.fromDto(
+						 ingredienteService.findById(item.getIngrediente().getId())
+			 	 );				 
+				return new ItemLanche(ingrediente, lanche, item.getQuantidade());
+			})
+			.collect(Collectors.toSet()));
+	
+		lanche.calculaValor();
+		PromocaoEnum.aplicaPromocoes(lanche);
+		lanche.calculaValor();	
+		
 		return lanche;
 	}
 
 	private LancheDto toDto(Lanche Lanche) {
 		return new LancheDto(Lanche);
 	}
-
 }

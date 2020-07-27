@@ -14,11 +14,11 @@ public class IngredienteDto implements Serializable{
 	
 	private Integer id;
 	
-	@NotEmpty(message = "Preenchimento Obrigatório !")
-	@Length(min = 3, max = 80, message = "O tamanho deve ser entre 3 e 80 caracteres !")
+	@NotEmpty(message = "O campo nome é obrigatório!")
+	@Length(min = 3, max = 80, message = "O campo nome deve ter entre 3 e 80 caracteres!")
 	private String nome;
 	
-	@PositiveOrZero(message = "O valor não pode ser negativo !")
+	@PositiveOrZero(message = "O preço não pode ser negativo!")
 	private Double preco;
 	
 	public IngredienteDto() {}
