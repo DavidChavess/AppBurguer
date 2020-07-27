@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ingredientes</title>
+</head>
+<body>
+    <div class="main">
+        <header class="header">
+            <img class="logo" src="image/logo_1.png" alt="">
+        </header>
+        <aside class="aside">
+            <nav>
+                <ul>
+                    <li><a href="#">Ingredientes</a></li>
+                    <li><a href="#">Lanches</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="section">
+            <h2>Cadastrar Ingredientes</h2>  
+            <form id="formIngrediente" action="">
+              
+                 
+                        <div>
+                            <label for="nomeIngrediente">Nome</label>
+                            <input type="text" id="nomeIngrediente">
+                        </div>
+                        <div>
+                            <label for="precoIngrediente">Preço</label>
+                            <input type="text" id="precoIngrediente">
+                        </div>
+                       
+                        <div>
+                            <button type="submit" id="btnCadastrar" class="btn-azul">Cadastrar</button>
+                        </div>
+                       
+            </form>
+            <div id="tabelaIngrediente">
+            </div>
+        </section>
+        <footer class="footer"></footer>
+    </div>
+    <script src="scripts/model/ingredientes/Ingrediente.js"></script>
+    <script src="scripts/model/ingredientes/Ingredientes.js"></script>
+    <script src="scripts/View/View.js"></script>
+    <script src="scripts/View/IngredienteView.js"></script>
+    <script src="scripts/controller/requests/Requests.js"></script>
+    <script src="scripts/controller/IngredienteController.js"></script>
+    <script src="scripts/app/App.js"></script>
+</body>
+</html>
