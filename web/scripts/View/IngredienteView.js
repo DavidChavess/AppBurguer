@@ -16,7 +16,7 @@ class IngredienteView extends View{
                                 <td>${ingrediente.preco}</td>
                                 <td id="acoes">
                                     <button><img src="image/update.png" alt=""></button>
-                                    <button><img src="image/delete.png" alt="" srcset=""></button>
+                                    <button rel = ${ingrediente.id}><img src="image/delete.png" alt="" srcset=""></button>
                                 </td>
                             </tr>`
                         ).join('')}

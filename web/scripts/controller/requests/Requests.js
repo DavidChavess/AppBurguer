@@ -20,6 +20,5 @@ class Requests{
                 return response;
             }
         })
-    }
-    
+    }    
 }
