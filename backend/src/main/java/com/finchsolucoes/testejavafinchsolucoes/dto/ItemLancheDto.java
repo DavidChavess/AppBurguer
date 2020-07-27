@@ -1,10 +1,13 @@
 package com.finchsolucoes.testejavafinchsolucoes.dto;
 
+import javax.validation.constraints.Positive;
+
 import com.finchsolucoes.testejavafinchsolucoes.model.Ingrediente;
 import com.finchsolucoes.testejavafinchsolucoes.model.ItemLanche;
 
 public class ItemLancheDto {
 	
+	@Positive(message = "A quantidade deve ser maior que zero!")
 	private Integer quantidade;
 	private Double valor;
 	private IngredienteDto ingrediente;

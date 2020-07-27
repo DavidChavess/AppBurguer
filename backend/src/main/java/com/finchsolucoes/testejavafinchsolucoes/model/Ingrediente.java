@@ -6,10 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PositiveOrZero;
-
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Ingrediente implements Serializable{
@@ -18,12 +14,7 @@ public class Ingrediente implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@NotEmpty(message = "O campo nome é obrigatório!")
-	@Length(min = 3, max = 80, message = "O campo nome deve ter entre 3 e 80 caracteres!")
 	private String nome;
-	
-	@PositiveOrZero(message = "O preço não pode ser negativo!")
 	private Double preco;
 	
 	public Ingrediente() {}

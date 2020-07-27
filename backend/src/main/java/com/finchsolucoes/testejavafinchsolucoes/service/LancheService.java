@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -39,6 +41,7 @@ public class LancheService {
 		throw new ObjectNotFoundException(String.format("Lanche não encontrado! ID = %d ", id));
 	}
 
+	@Transactional
 	public LancheDto insert(LancheDto lancheDto) {
 		lancheDto.setId(null);
 		return new LancheDto(lancheRepository.save(fromDto(lancheDto)));

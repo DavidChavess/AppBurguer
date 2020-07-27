@@ -10,7 +10,6 @@ import com.finchsolucoes.testejavafinchsolucoes.model.pk.ItemLanchePK;
 public class ItemLanche {
 	@EmbeddedId
 	private ItemLanchePK id = new ItemLanchePK();
-	
 	private Integer quantidade;
 	private Double valor;
 	
