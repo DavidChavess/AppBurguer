@@ -1,5 +1,6 @@
 package com.finchsolucoes.testejavafinchsolucoes.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
@@ -10,7 +11,11 @@ import com.finchsolucoes.testejavafinchsolucoes.model.pk.ItemLanchePK;
 public class ItemLanche {
 	@EmbeddedId
 	private ItemLanchePK id = new ItemLanchePK();
+	
+	@Column(name = "quantidade", nullable = false)
 	private Integer quantidade;
+	
+	@Column(name = "valor", nullable = false)
 	private Double valor;
 	
 	public ItemLanche() {}

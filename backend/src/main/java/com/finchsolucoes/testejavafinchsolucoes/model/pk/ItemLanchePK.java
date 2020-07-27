@@ -15,7 +15,7 @@ public class ItemLanchePK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	@JoinColumn(name = "lache_id")
+	@JoinColumn(name = "lanche_id")
 	private Lanche lanche;
 
 	@ManyToOne

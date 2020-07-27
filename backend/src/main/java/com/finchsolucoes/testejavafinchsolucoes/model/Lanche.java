@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,16 @@ public class Lanche implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, updatable = false)
 	private Integer id;
+	
+	@Column(name = "nome", unique = true, nullable = false, length = 80)
 	private String nome;
+	
+	@Column(name = "valor", nullable = false)
 	private Double valor;
+	
+	@Column(name = "desconto", nullable = false)
 	private double desconto;
 	
 	@OneToMany(mappedBy = "id.lanche", cascade = CascadeType.ALL, orphanRemoval = true)

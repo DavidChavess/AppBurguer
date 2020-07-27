@@ -2,6 +2,7 @@ package com.finchsolucoes.testejavafinchsolucoes.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +14,13 @@ public class Ingrediente implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, updatable = false)
 	private Integer id;
+	
+	@Column(name = "nome", unique = true, nullable = false, length = 80)
 	private String nome;
+	
+	@Column(name = "preco", nullable = false)
 	private Double preco;
 	
 	public Ingrediente() {}
