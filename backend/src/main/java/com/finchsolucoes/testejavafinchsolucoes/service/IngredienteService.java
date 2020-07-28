@@ -34,11 +34,13 @@ public class IngredienteService {
 	}
 
 	public IngredienteDto insert(IngredienteDto ingredienteDto) {
+		ingredienteDto.setId(null);
 		return new IngredienteDto(repository.save(fromDto(ingredienteDto)));
 	}
 
 	public IngredienteDto update(Integer id, IngredienteDto ingredienteDto) {
 		IngredienteDto antigo = findById(id);
+		antigo.setId(id);
 		antigo.setNome(ingredienteDto.getNome());
 		antigo.setPreco(ingredienteDto.getPreco());
 		return toDto(repository.save(fromDto(antigo)));
