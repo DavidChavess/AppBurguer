@@ -9,7 +9,6 @@ class IngredienteView extends View{
                             <th>Ações</th>
                         </tr>
                     </thead>
-               
                     <tbody>
                         ${ingredientes.paraArray().map(ingrediente =>  
                             `<tr>
@@ -18,11 +17,20 @@ class IngredienteView extends View{
                                 <td>${ingrediente.preco}</td>
                                 <td>
                                     <button id="edit"><a href='ingredienteCadastrar.html?id=${ingrediente.id}'>edit</a></button>
-                                    <button id="delete"><a href='?id=1'>delete</a></button>
+                                    <button><a href='?id=${ingrediente.id}'>delete</a></button>
                                 </td>
                             </tr>`
                         ).join('')}
                     </tbody>
                 </table>`
+    }
+
+    _templateSelect(ingredientes){
+        return `<label>Ingredientes</label>
+                    <select id="selectIngredientes">
+                        ${ingredientes.map(ingrediente => {
+                            `<option value=${ingrediente.id}>${ingrediente.nome}</option>`
+                        }).join('')}
+                    </select>`
     }
 }

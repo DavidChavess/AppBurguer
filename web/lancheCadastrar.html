@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Churrascaria</title>
+</head>
+<body>
+    <div class="main">
+        <header class="header">
+            <img class="logo" src="image/logo_1.png" alt="">
+        </header>
+        <aside class="aside">
+            <nav>
+                <ul>
+                    <li><a href="ingredienteListar.html">Ingredientes</a></li>
+                    <ol>
+                        <li><a href="ingredienteListar.html">Listar</a></li>
+                        <li><a href="ingredienteCadastrar.html">Cadastrar</a></li>
+                    </ol>
+                    <li><a href="#">Lanches</a></li>
+                    <ol>
+                        <li><a href="#">Listar</a></li>
+                        <li><a href="#">Cadastrar</a></li>
+                    </ol>
+                </ul>
+            </nav>
+        </aside>
+        <section class="section">
+            <div>
+                <h2>Lanche</h2>  
+                <form id="formLanche" id="form-1" class="form-row" action="">            
+                    <div>
+                        <label for="nomeLanche">Nome do Lanche</label>
+                        <input type="text" id="nomeLanche">
+                     </div>
+
+                     <div id="ingredientes">
+                        <label>Ingredientes</label>
+                        <select id="selectIngredientes">
+                            <option value="1">Alface</option>
+                            <option value="2">Tomate</option>
+                            <option value="3">Bacon</option>
+                            <option value="4">Hanburguer</option>
+                            <option value="5">Ovo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="quantidadeLanche">Quantidade</label>
+                        <input type="text" name="" id="quantidadeLanche">
+                    </div>
+                                   
+                    <div class="btn-container">
+                        <button class="btn-azul">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+            <div id="lanche">
+                
+            </div>
+
+            <div class="btn-container">
+                <button class="btn-azul">Salvar</button>
+            </div>         
+        </section>
+        <footer class="footer"></footer>
+    </div>
+    <script src="scripts/model/ingredientes/Ingrediente.js" ></script>
+    <script src="scripts/model/ingredientes/Ingredientes.js" ></script>
+    <script src="scripts/model/itensDoLanche/ItemLanche.js"></script>
+    <script src="scripts/model/lanches/Lanche.js" ></script>
+    <script src="scripts/View/View.js"></script>
+    <script src="scripts/View/IngredienteView.js"></script>
+    <script src="scripts/View/LancheView.js"></script>
+    <script src="scripts/controller/LancheController.js"></script>
+    <script src="scripts/app/initLanche.js"></script>
+</body>
+</html>

@@ -49,6 +49,9 @@ class IngredienteController{
         })           
     }  
 
+    alertar(){
+        alert("ola");
+    }
     _criaIngrediente(){
         return new Ingrediente(
             null,
