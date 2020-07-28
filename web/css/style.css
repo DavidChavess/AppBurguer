@@ -109,7 +109,6 @@ table tr td button:hover{
 .btn-azul{
     background-color: #0275d8;
     color: #FFF;
-    padding: 10px 20px;
     border: none;
 }
 .btn-container{
@@ -117,6 +116,12 @@ table tr td button:hover{
     margin: 10px;
     justify-content: flex-end;
     box-sizing: border-box;
+}
+.btn-azul a{
+    color: #fff;
+    padding: 100px 10px;
+    font-size: 1.5em;
+    text-decoration: none;
 }
 .btn-azul:hover{
     background-color: #0274d8d0;

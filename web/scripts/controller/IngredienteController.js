@@ -3,7 +3,7 @@ class IngredienteController{
         this._inputNomeIngrediente = $("#nomeIngrediente");
         this._inputPrecoIngrediente = $("#precoIngrediente");
         this._ingredientes = new Ingredientes(); 
-        this._ingredienteView = new IngredienteView("#tabelaIngrediente"); 
+        this._ingredienteView = new IngredienteView("#tabelaIngrediente");
     }
 
     adiciona(event){

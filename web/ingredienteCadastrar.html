@@ -15,6 +15,10 @@
             <nav>
                 <ul>
                     <li><a href="#">Ingredientes</a></li>
+                        <ol>
+                            <li><a href="ingredienteListar.html">Listar</a></li>
+                            <li><a href="#">Cadastrar</a></li>
+                        </ol>
                     <li><a href="#">Lanches</a></li>
                 </ul>
             </nav>
@@ -22,21 +26,18 @@
         <section class="section">
             <h2>Cadastrar Ingredientes</h2>  
             <form id="formIngrediente" action="">
-              
-                 
-                        <div>
-                            <label for="nomeIngrediente">Nome</label>
-                            <input type="text" id="nomeIngrediente">
-                        </div>
-                        <div>
-                            <label for="precoIngrediente">Preço</label>
-                            <input type="text" id="precoIngrediente">
-                        </div>
-                       
-                        <div>
-                            <button type="submit" id="btnCadastrar" class="btn-azul">Cadastrar</button>
-                        </div>
-                       
+                <div>
+                    <label for="nomeIngrediente">Nome</label>
+                    <input type="text" id="nomeIngrediente">
+                </div>
+                <div>
+                    <label for="precoIngrediente">Preço</label>
+                    <input type="text" id="precoIngrediente">
+                </div>
+                
+                <div>
+                    <button type="submit" id="btnCadastrar" class="btn-azul">Cadastrar</button>
+                </div>                      
             </form>
             <div id="tabelaIngrediente">
             </div>
@@ -49,6 +50,7 @@
     <script src="scripts/View/IngredienteView.js"></script>
     <script src="scripts/controller/requests/Requests.js"></script>
     <script src="scripts/controller/IngredienteController.js"></script>
-    <script src="scripts/app/App.js"></script>
+    <script src="scripts/app/init.js"></script>
+    <script src="scripts/app/adicionar.js"></script>
 </body>
 </html>
