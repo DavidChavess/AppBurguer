@@ -6,14 +6,37 @@ class IngredienteController{
         this._ingredienteView = new IngredienteView("#tabelaIngrediente");
     }
 
-    adiciona(event){
+    adicionarIngrediente(event){
         event.preventDefault();
-        let body = {nome:this._criaIngrediente().nome, preco:this._criaIngrediente().preco};
+        const ingrediente = this._criaIngrediente();
+        const body = {nome:ingrediente.nome, preco:ingrediente.preco};
         Requests.post("http://localhost:8080/ingredientes", body)
-        .then(() => {
-            this._ingredientes.adiciona(body);
+        .then((ingrediente) => {
+            this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._ingredienteView.update(this._ingredientes);
         })        
+    }
+
+    editarIngrediente(event){
+        event.preventDefault();
+        const ingrediente = this._criaIngrediente();
+        const body = {nome:ingrediente.nome, preco:ingrediente.preco};
+        Requests.put(`http://localhost:8080/ingredientes`,idIngrediente, body)
+        .then((ingrediente) => {
+            this._ingredientes.esvaziaIngredientes();
+            this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
+            this._ingredienteView.update(this._ingredientes);
+        })                    
+    }
+
+    importarUmIngredientePorId(id){
+        Requests.get(`http://localhost:8080/ingredientes/${id}`) 
+        .then((ingredienteDaRequisicao) => {
+            const ingrediente = new Ingrediente(ingredienteDaRequisicao.id, ingredienteDaRequisicao.nome, ingredienteDaRequisicao.preco);
+            this._inputAutoPreenchido(ingrediente);
+            this._ingredientes.adiciona(ingrediente);
+            this._ingredienteView.update(this._ingredientes);
+        })
     }
 
     importarIngredientes(){
@@ -33,7 +56,9 @@ class IngredienteController{
             parseFloat(this._inputPrecoIngrediente.value)
         );
     }
-    _criaIngredienteComIngrediente(ingrediente){
-        return new Ingrediente(null, ingrediente.nome, ingrediente.preco);
+   
+    _inputAutoPreenchido(ingrediente){
+        this._inputNomeIngrediente.value = ingrediente.nome;
+        this._inputPrecoIngrediente.value = ingrediente.preco;
     }
 }
