@@ -71,8 +71,9 @@ table thead tr th {
 table td{
     padding: 15px;
 }
-table tbody tr:nth-child(odd){
+table tbody tr{
     background-color: #cecece;
+}
 }
 
 table tr td#acoes{

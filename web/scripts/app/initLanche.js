@@ -1,3 +1,4 @@
-const formLanche = document.querySelector("#formLanche");
+//const formLanche = document.querySelector("#formLanche");
 const lancheController = new LancheController();
-formLanche.addEventListener("submit", lancheController.adicionarLanche.bind(lancheController));
+lancheController.importarLanches();
+//formLanche.addEventListener("submit", lancheController.adicionarLanche.bind(lancheController));

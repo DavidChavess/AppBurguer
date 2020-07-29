@@ -1,7 +1,8 @@
 class Lanche{
-    constructor(id, nome){
+    constructor(id, nome, valor){
         this._id = id;
         this._nome = nome;
+        this._valor = valor;
         this._itens = [];
     }
     set id(id){
@@ -22,10 +23,18 @@ class Lanche{
     get valor(){
         return this._valor;
     }
-    get itens(){
+    
+    itensParaArray(){
         return this._itens;
     }
+
     adicionaItem(item){
         this._itens.push(item);
+    }
+    
+    adicionaTodosItens(itens){
+        itens.forEach(item => {
+            this.adicionaItem(item);
+        });
     }
 }

@@ -4,12 +4,11 @@ class LancheView extends View{
         return `<table id="table">
                     <thead>
                         <tr>
-                            <th>Id do Lanche</th>
+                            <th>Id</th>
                             <th>Nome do Lanche</th>
                             <th>Ingrediente</th>
                             <th>Quantidade</th>
                             <th>Preço</th>
-                            <th>Total</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -28,11 +27,6 @@ class LancheView extends View{
                             </td>
                         </tr>`).join('')}
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>${lanche.valor}</td>
-                        </tr>
-                    <t/foot>
                 </table>`
     }
 }
