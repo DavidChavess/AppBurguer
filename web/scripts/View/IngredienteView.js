@@ -24,13 +24,4 @@ class IngredienteView extends View{
                     </tbody>
                 </table>`
     }
-
-    _templateSelect(ingredientes){
-        return `<label>Ingredientes</label>
-                    <select id="selectIngredientes">
-                        ${ingredientes.map(ingrediente => {
-                            `<option value=${ingrediente.id}>${ingrediente.nome}</option>`
-                        }).join('')}
-                    </select>`
-    }
 }

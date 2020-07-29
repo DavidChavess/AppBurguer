@@ -2,19 +2,49 @@ class LancheController{
     constructor(){
         const $ = document.querySelector.bind(document);
         this._inputNomeLanche = $("#nomeLanche");
-        this._inputSelectIngredientes = $("#selectIngredientes");
-        this._lanches = new Lanches();
+        this._inputIdIngrediente = $("#idIngrediente");
         this._inputQuantidadeLanche = $("#quantidadeLanche");
-        //this._lanchesView = new LancheView("#lanche");
-        this._itemView = new Item("#lanche");
+
+        this._lanches = new Lanches();
+        this._lancheView = new LancheView("#lanche");
+        this._cadastroLancheView = new CadastroLancheView("#lanche");
+        this._lancheView.update(this._lanches);
+        this._cadastroLancheView.update(this._lanches);
     }
 
     adicionarLanche(event){
         event.preventDefault();
         this._lanches.adiciona(this._criaLanche());
-        this._itemView.update(this._lanches);
-       
-        
+        this._cadastroLancheView.update(this._lanches);     
+    }
+
+    cadastrarLanche(event){
+        event.preventDefault();
+        const entidadeLanche = new Lanche();
+        this._lanches.paraArray()
+        .forEach(lanche => {
+            entidadeLanche.nome = lanche.nome;
+            entidadeLanche.adicionaTodosItens(
+                lanche.itensParaArray().map(item => {
+                const ingrediente = new Ingrediente(item.ingrediente.id)
+                return new ItemLanche(ingrediente,item.quantidade)})
+            )
+        })
+
+        Requests.post("http://localhost:8080/lanches", entidadeLanche)
+        .then((lancheDaRequisicao) => {
+            const lanche = new Lanche(lancheDaRequisicao.id, lancheDaRequisicao.nome, lancheDaRequisicao.valor);
+            lanche.adicionaTodosItens(
+                lancheDaRequisicao
+                .ingredientes.map((item => {
+                    const ingrediente = new Ingrediente(item.ingrediente.id, item.ingrediente.nome, item.ingrediente.preco)
+                    return new ItemLanche(ingrediente, item.quantidade, item.valor)
+                }))
+            )
+            this._lanches.esvazia();
+            this._lanches.adiciona(lanche);
+            this._lancheView.update(this._lanches);
+        })
     }
 
     importarUmLanchePorId(id){
@@ -25,11 +55,11 @@ class LancheController{
                 lancheDaRequisicao
                 .ingredientes.map((item => {
                     const ingrediente = new Ingrediente(item.ingrediente.id, item.ingrediente.nome, item.ingrediente.preco)
-                    return new ItemLanche(ingrediente, item.quantidade)
+                    return new ItemLanche(ingrediente, item.quantidade, item.valor)
                 }))
             )
             this._lanches.adiciona(lanche);
-            this._itemView.update(this._lanches);
+            this._lancheView.update(this._lanches);
         })
     }
 
@@ -43,19 +73,22 @@ class LancheController{
                     lanche
                     .ingredientes.map((item => {
                         const ingrediente = new Ingrediente(item.ingrediente.id, item.ingrediente.nome, item.ingrediente.preco)
-                        return new ItemLanche(ingrediente, item.quantidade)
+                        return new ItemLanche(ingrediente, item.quantidade, item.valor)
                     }))
                 )
                 this._lanches.adiciona(entidadeLanche);
             })
-            this._itemView.update(this._lanches);
+            this._lancheView.update(this._lanches);
         })
     }
 
   
     _criaLanche(){
         const lanche = new Lanche(null, this._inputNomeLanche.value);
-        lanche.adicionaItem(new ItemLanche(this._inputSelectIngredientes.value, this._inputQuantidadeLanche.value))
+        lanche.adicionaItem(new ItemLanche(
+            new Ingrediente(this._inputIdIngrediente.value),
+            this._inputQuantidadeLanche.value)
+        )
         return lanche;
     }
    

@@ -21,7 +21,7 @@
                     </ol>
                     <li><a href="#">Lanches</a></li>
                     <ol>
-                        <li><a href="#">Listar</a></li>
+                        <li><a href="lancheListar.html">Listar</a></li>
                         <li><a href="#">Cadastrar</a></li>
                     </ol>
                 </ul>
@@ -36,15 +36,9 @@
                         <input type="text" id="nomeLanche">
                      </div>
 
-                     <div id="ingredientes">
-                        <label>Ingredientes</label>
-                        <select id="selectIngredientes">
-                            <option value="1">Alface</option>
-                            <option value="2">Tomate</option>
-                            <option value="3">Bacon</option>
-                            <option value="4">Hanburguer</option>
-                            <option value="5">Ovo</option>
-                        </select>
+                    <div id="ingredientes">
+                        <label for="idIngrediente">Id do Ingrediente</label>
+                        <input type="text" name="" id="idIngrediente">
                     </div>
 
                     <div>
@@ -62,8 +56,8 @@
             </div>
 
             <div class="btn-container">
-                <button class="btn-azul">Salvar</button>
-            </div>         
+                <button id="cadastrarLanche" class="btn-azul">Salvar</button>
+            </div>          
         </section>
         <footer class="footer"></footer>
     </div>
@@ -74,9 +68,11 @@
     <script src="scripts/model/lanches/Lanches.js" ></script>
     <script src="scripts/View/View.js"></script>
     <script src="scripts/View/Item.js"></script>
+    <script src="scripts/View/CadastroLancheView.js"></script>
     <script src="scripts/View/LancheView.js"></script>
     <script src="scripts/controller/requests/Requests.js"></script>
     <script src="scripts/controller/LancheController.js"></script>
-    <script src="scripts/app/initLanche.js"></script>
+    <script src="scripts/app/init.js"></script>
+    <script src="scripts/app/appCadastrarLanche.js"></script>
 </body>
 </html>

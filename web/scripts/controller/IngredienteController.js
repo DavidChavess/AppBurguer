@@ -1,9 +1,11 @@
 class IngredienteController{
     constructor(){
+        const $ = document.querySelector.bind(document);
         this._inputNomeIngrediente = $("#nomeIngrediente");
         this._inputPrecoIngrediente = $("#precoIngrediente");
         this._ingredientes = new Ingredientes(); 
         this._ingredienteView = new IngredienteView("#tabelaIngrediente");
+        this._ingredienteView.update(this._ingredientes);
     }
 
     adicionarIngrediente(event){
@@ -49,9 +51,6 @@ class IngredienteController{
         })           
     }  
 
-    alertar(){
-        alert("ola");
-    }
     _criaIngrediente(){
         return new Ingrediente(
             null,
