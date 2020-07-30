@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ingredientes</title>
+</head>
+<body>
+    <div class="main">
+        <header class="header">
+            <img class="logo" src="image/logo_1.png" alt="">
+        </header>
+        <aside class="aside">
+            <nav>
+                <ul>
+                    <li><a href="#">Ingredientes</a></li>
+                    <ol>
+                        <li><a href="#">Listar</a></li>
+                        <li><a href="ingredienteCadastrar.html">Cadastrar</a></li>
+                    </ol>
+                    <li><a href="lancheListar.html">lanche</a></li>
+                    <ol>
+                        <li><a href="lancheListar.html">Listar</a></li>
+                        <li><a href="lancheCadastrar.html">Cadastrar</a></li>
+                    </ol>
+                </ul>
+            </nav>
+        </aside>
+        <section class="section">
+            <h2>Listar Ingredientes</h2>
+            <div id="mensagem">
+                    
+            </div>
+            <div class="btn-container">
+                <button type="submit" id="btnCadastrar" class="btn-azul"><a href="ingredienteCadastrar.html">+</a></button>
+            </div>
+            <form>
+                <div>
+                    <label for="buscar">Buscar</label>
+                    <input type="search">
+                </div>
+                <div class="btn-container">
+                    <button type="submit" id="btnCadastrar" class="btn-azul">Buscar</button>
+                </div>   
+            </form>  
+            <div id="tabelaIngrediente">
+            </div>
+        </section>
+        <footer class="footer"></footer>
+    </div>
+    <script src="scripts/model/ingredientes/Ingrediente.js"></script>
+    <script src="scripts/model/ingredientes/Ingredientes.js"></script>
+    <script src="scripts/ui/view/View.js"></script>
+    <script src="scripts/ui/view/IngredienteView.js"></script>
+    <script src="scripts/ui/model/Mensagem.js"></script>
+    <script src="scripts/ui/view/MensagemView.js"></script>
+    <script src="scripts/controller/requests/Requests.js"></script>
+    <script src="scripts/controller/IngredienteController.js"></script>
+    <script src="scripts/app/appDeletarIngrediente.js"></script>
+</body>
+</html>

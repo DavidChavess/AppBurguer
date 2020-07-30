@@ -61,6 +61,15 @@ class IngredienteController{
         })           
     }  
 
+    apagaIngrediente(id){
+        Requests.delete(`http://localhost:8080/ingredientes`, id) 
+        .then(() => {
+            this._mensagem.texto = "Ingrediente apagado com sucesso!";
+            this._mensagemView.update(this._mensagem);
+            this.importarIngredientes();
+        })
+    }
+
     _criaIngrediente(){
         return new Ingrediente(
             null,

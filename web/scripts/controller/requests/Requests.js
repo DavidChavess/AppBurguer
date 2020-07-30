@@ -32,4 +32,14 @@ class Requests{
             return response.json();
         })
     }
+    
+    static delete(url, id){
+        return fetch(url + `/${id}`, {
+            method: 'DELETE',
+            headers: {"Content-Type":"Application/json"}
+        })
+        .then((response) => {
+            return response;
+        })
+    }
 }

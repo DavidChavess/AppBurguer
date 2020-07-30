@@ -16,8 +16,8 @@ class IngredienteView extends View{
                                 <td>${ingrediente.nome}</td>
                                 <td>${ingrediente.preco}</td>
                                 <td>
-                                    <button id="edit"><a href='ingredienteCadastrar.html?id=${ingrediente.id}'>edit</a></button>
-                                    <button><a href='?id=${ingrediente.id}'>delete</a></button>
+                                    <button id="edit"><a href='ingredienteCadastrar.html?id=${ingrediente.id}'>editar</a></button>
+                                    <button id="edit"><a href='ingredienteDeletar.html?id=${ingrediente.id}'>deletar</a></button>
                                 </td>
                             </tr>`
                         ).join('')}
