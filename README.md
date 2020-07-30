@@ -3,14 +3,16 @@ Criar uma aplicação web para satisfazer as necessidades de uma startup do ramo
 
 # Instruções de execução
 
+Antes de seguir o passo a passo, você irá precisar ter o Java instalado no seu computador
+
 1 - Dentro do repositório, faça o download do zip do projeto. 
 
 2 - Vá até o local onde você baixou o projeto e descompacte o zip
 
 3 - Dentro da pasta Teste-Java-Finch-Solucoes-master entre em backend e copie o caminho da url
 
-4 - Agora abri um terminal cmd e ditete: cd + caminhoDaUrl, deve ficar mais ou menos assim:
-    - cd C:\Users\david\Desktop\Projeto\Teste-Java-Finch-Solucoes-master\backend
+4 - Agora abri um terminal cmd e digite o comando: cd + caminhoDaUrl, deve ficar mais ou menos assim:
+    cd C:\Users\david\Desktop\Projeto\Teste-Java-Finch-Solucoes-master\backend
 
 5 - Agora digite o seguinte comando: mvn pakage 
 
