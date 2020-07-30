@@ -31,7 +31,7 @@ public class TesteJavaFinchSolucoesApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Ingrediente alface = new Ingrediente(null, "Alface", 0.40);
 		Ingrediente bacon = new Ingrediente(null, "Bacon", 2.00);
-		Ingrediente hamburguer = new Ingrediente(null, "Hambúrguer", 3.00);
+		Ingrediente hamburguer = new Ingrediente(null, "Hamburguer", 3.00);
 		Ingrediente ovo = new Ingrediente(null, "Ovo", 0.80);
 		Ingrediente queijo = new Ingrediente(null, "Queijo", 1.50);
 
