@@ -35,7 +35,7 @@ class LancheView extends View{
                 <td>${item.quantidade}</td>
                 <td>${item.valor}</td>
                 <td>
-                    <button><a href='lancheDeletar.html?id=${lanche.id}'>delete</a></button>
+                    <button><a href='telas/lancheDeletar.html?id=${lanche.id}'>Deletar Lanche</a></button>
                 </td>
             </tr>
          
