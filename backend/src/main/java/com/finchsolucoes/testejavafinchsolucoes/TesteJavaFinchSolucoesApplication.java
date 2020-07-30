@@ -29,6 +29,7 @@ public class TesteJavaFinchSolucoesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		
 		Ingrediente alface = new Ingrediente(null, "Alface", 0.40);
 		Ingrediente bacon = new Ingrediente(null, "Bacon", 2.00);
 		Ingrediente hamburguer = new Ingrediente(null, "Hamburguer", 3.00);
@@ -39,18 +40,49 @@ public class TesteJavaFinchSolucoesApplication implements CommandLineRunner {
 		 
 		Lanche xBacon = new Lanche(null, "X-Bacon");
 		
-		ItemLanche i1 = new ItemLanche(bacon, xBacon, 1);
-		ItemLanche i2 = new ItemLanche(hamburguer, xBacon, 1);
+		xBacon.getIngredientes().addAll(Arrays.asList(
+				new ItemLanche(bacon, xBacon, 1),
+				new ItemLanche(hamburguer, xBacon, 1),
+				new ItemLanche(queijo, xBacon, 1))
+		);
 		
-		xBacon.getIngredientes().add(i1);
-		xBacon.getIngredientes().add(i2);
-		
-		i1.setLanche(xBacon);
-		i2.setLanche(xBacon);
 		xBacon.calculaValor();
-		
 		lancheRepository.save(xBacon);
 		
+		 
+		Lanche xBurguer = new Lanche(null, "X-Burguer");
+		
+		xBurguer.getIngredientes().addAll(Arrays.asList(
+				new ItemLanche(hamburguer, xBurguer, 1),
+				new ItemLanche(queijo, xBurguer, 1))
+		);
+		
+		xBurguer.calculaValor();	
+		lancheRepository.save(xBurguer);
+		
+		
+		Lanche xEgg = new Lanche(null, "X-Egg");
+		
+		xEgg.getIngredientes().addAll(Arrays.asList(
+				new ItemLanche(hamburguer, xEgg, 1),
+				new ItemLanche(ovo, xEgg, 1),
+				new ItemLanche(queijo, xEgg, 1))
+		);
+		
+		xEgg.calculaValor();	
+		lancheRepository.save(xEgg);
+		
+		Lanche xEggBacon = new Lanche(null, "X-Egg Bacon");
+		
+		xEggBacon.getIngredientes().addAll(Arrays.asList(
+				new ItemLanche(hamburguer, xEggBacon, 1),
+				new ItemLanche(ovo, xEggBacon, 1),
+				new ItemLanche(queijo, xEggBacon, 1),
+				new ItemLanche(bacon, xEggBacon, 1))
+		);
+		
+		xEggBacon.calculaValor();	
+		lancheRepository.save(xEggBacon);
 	}
 
 }
