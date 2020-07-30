@@ -6,8 +6,13 @@ class LancheController{
         this._inputQuantidadeLanche = $("#quantidadeLanche");
 
         this._lanches = new Lanches();
+        this._mensagem = new Mensagem();
+
         this._lancheView = new LancheView("#lanche");
         this._cadastroLancheView = new CadastroLancheView("#lanche");
+        this._mensagemView = new MensagemView("#mensagem");
+
+        this._mensagemView.update(this._mensagem);
         this._lancheView.update(this._lanches);
         this._cadastroLancheView.update(this._lanches);
     }
@@ -44,6 +49,8 @@ class LancheController{
             this._lanches.esvazia();
             this._lanches.adiciona(lanche);
             this._lancheView.update(this._lanches);
+            this._mensagem.texto = "Lanche cadastrado com sucesso!";
+            this._mensagemView.update(this._mensagem);
         })
     }
 

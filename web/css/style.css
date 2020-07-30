@@ -135,6 +135,14 @@ table tr td button:hover{
     width: 100%;  
 }
 
+div#mensagem p.message{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
 
 
 

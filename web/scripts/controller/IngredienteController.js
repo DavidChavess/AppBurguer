@@ -3,9 +3,15 @@ class IngredienteController{
         const $ = document.querySelector.bind(document);
         this._inputNomeIngrediente = $("#nomeIngrediente");
         this._inputPrecoIngrediente = $("#precoIngrediente");
+
         this._ingredientes = new Ingredientes(); 
+        this._mensagem = new Mensagem();
+
         this._ingredienteView = new IngredienteView("#tabelaIngrediente");
+        this._mensagemView = new MensagemView("#mensagem");
+
         this._ingredienteView.update(this._ingredientes);
+        this._mensagemView.update(this._mensagem);
     }
 
     adicionarIngrediente(event){
@@ -16,6 +22,8 @@ class IngredienteController{
         .then((ingrediente) => {
             this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._ingredienteView.update(this._ingredientes);
+            this._mensagem.texto = "Ingrediente cadastrado com sucesso!";
+            this._mensagemView.update(this._mensagem);
         })        
     }
 
@@ -28,6 +36,8 @@ class IngredienteController{
             this._ingredientes.esvaziaIngredientes();
             this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._ingredienteView.update(this._ingredientes);
+            this._mensagem.texto = "Ingrediente alterado com sucesso!";
+            this._mensagemView.update(this._mensagem);
         })                    
     }
 
