@@ -8,17 +8,15 @@ class IngredienteController{
         this._mensagem = new Mensagem();
 
         this._ingredienteView = new IngredienteView("#tabelaIngrediente");
-        this._mensagemView = new MensagemView("#mensagem");
-
         this._ingredienteView.update(this._ingredientes);
+
+        this._mensagemView = new MensagemView("#mensagem");
         this._mensagemView.update(this._mensagem);
     }
 
     adicionarIngrediente(event){
         event.preventDefault();
-        const ingrediente = this._criaIngrediente();
-        const body = {nome:ingrediente.nome, preco:ingrediente.preco};
-        Requests.post("http://localhost:8080/ingredientes", body)
+        Requests.post("http://localhost:8080/ingredientes", this._criaIngrediente())
         .then((ingrediente) => {
             this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._ingredienteView.update(this._ingredientes);
@@ -29,32 +27,29 @@ class IngredienteController{
 
     editarIngrediente(event){
         event.preventDefault();
-        const ingrediente = this._criaIngrediente();
-        const body = {nome:ingrediente.nome, preco:ingrediente.preco};
-        Requests.put(`http://localhost:8080/ingredientes`,idIngrediente, body)
+        Requests.put(`http://localhost:8080/ingredientes`,idIngrediente, this._criaIngrediente())
         .then((ingrediente) => {
             this._ingredientes.esvaziaIngredientes();
             this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._ingredienteView.update(this._ingredientes);
             this._mensagem.texto = "Ingrediente alterado com sucesso!";
             this._mensagemView.update(this._mensagem);
-        })                    
+        })            
     }
 
     importarUmIngredientePorId(id){
         Requests.get(`http://localhost:8080/ingredientes/${id}`) 
-        .then((ingredienteDaRequisicao) => {
-            const ingrediente = new Ingrediente(ingredienteDaRequisicao.id, ingredienteDaRequisicao.nome, ingredienteDaRequisicao.preco);
+        .then((ingrediente) => {
+            this._ingredientes.adiciona(new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco));
             this._inputAutoPreenchido(ingrediente);
-            this._ingredientes.adiciona(ingrediente);
             this._ingredienteView.update(this._ingredientes);
         })
     }
 
     importarIngredientes(){
         Requests.get("http://localhost:8080/ingredientes") 
-        .then((ingredientesDaRequisicao) => {
-            ingredientesDaRequisicao
+        .then((ingredientes) => {
+            ingredientes
             .map(ingrediente => new Ingrediente(ingrediente.id, ingrediente.nome, ingrediente.preco))
             .forEach(ingrediente => this._ingredientes.adiciona(ingrediente));
             this._ingredienteView.update(this._ingredientes);
@@ -63,11 +58,16 @@ class IngredienteController{
 
     apagaIngrediente(id){
         Requests.delete(`http://localhost:8080/ingredientes`, id) 
-        .then(() => {
-            this._mensagem.texto = "Ingrediente apagado com sucesso!";
-            this._mensagemView.update(this._mensagem);
-            this.importarIngredientes();
-        })
+        .then((response) => {
+            if(response.status === 400){
+                this._mensagem.texto = response.message;
+                this._mensagemView.update(this._mensagem);
+            }else{
+                this._mensagem.texto = "Ingrediente apagado com sucesso";
+                this._mensagemView.update(this._mensagem);
+                this.importarIngredientes();
+            }           
+        }) 
     }
 
     _criaIngrediente(){

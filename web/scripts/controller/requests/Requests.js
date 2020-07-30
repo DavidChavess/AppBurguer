@@ -19,6 +19,7 @@ class Requests{
             if(response.status === 201){
                 return response.json();
             }
+            return response;
         })
     }
 
@@ -39,7 +40,9 @@ class Requests{
             headers: {"Content-Type":"Application/json"}
         })
         .then((response) => {
+            if(response.status === 400) return response.json()
             return response;
         })
     }
+    
 }

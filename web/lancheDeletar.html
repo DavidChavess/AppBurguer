@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Ingredientes</title>
+    <title>Churrascaria</title>
 </head>
 <body>
     <div class="main">
@@ -14,41 +14,43 @@
         <aside class="aside">
             <nav>
                 <ul>
-                    <li><a href="#">Ingredientes</a></li>
+                    <li><a href="ingredienteListar.html">Ingredientes</a></li>
                     <ol>
-                        <li><a href="#">Listar</a></li>
+                        <li><a href="ingredienteListar.html">Listar</a></li>
                         <li><a href="ingredienteCadastrar.html">Cadastrar</a></li>
                     </ol>
-                    <li><a href="lancheListar.html">lanche</a></li>
+                    <li><a href="#">Lanches</a></li>
                     <ol>
-                        <li><a href="lancheListar.html">Listar</a></li>
+                        <li><a href="#">Listar</a></li>
                         <li><a href="lancheCadastrar.html">Cadastrar</a></li>
                     </ol>
                 </ul>
             </nav>
         </aside>
         <section class="section">
-            <h2>Listar Ingredientes</h2>
+            <h2>Listar Lanches</h2>  
             <div id="mensagem">
                     
             </div>
-            <div class="btn-container">
-                <button type="submit" id="btnCadastrar" class="btn-azul"><a href="ingredienteCadastrar.html">+</a></button>
-            </div>
            
-            <div id="tabelaIngrediente">
+            <div id="lanche">
+                
             </div>
+        
         </section>
         <footer class="footer"></footer>
     </div>
     <script src="scripts/model/ingredientes/Ingrediente.js"></script>
-    <script src="scripts/model/ingredientes/Ingredientes.js"></script>
+    <script src="scripts/model/itensDoLanche/ItemLanche.js"></script>
+    <script src="scripts/model/lanches/Lanche.js" ></script>
+    <script src="scripts/model/lanches/Lanches.js" ></script>
     <script src="scripts/ui/view/View.js"></script>
-    <script src="scripts/ui/view/IngredienteView.js"></script>
+    <script src="scripts/ui/view/CadastroLancheView.js"></script>
+    <script src="scripts/ui/view/LancheView.js"></script>
     <script src="scripts/ui/model/Mensagem.js"></script>
     <script src="scripts/ui/view/MensagemView.js"></script>
     <script src="scripts/controller/requests/Requests.js"></script>
-    <script src="scripts/controller/IngredienteController.js"></script>
-    <script src="scripts/app/appListarIngrediente.js"></script>
+    <script src="scripts/controller/LancheController.js"></script>
+    <script src="scripts/app/appDeletarLanche.js"></script>
 </body>
 </html>
