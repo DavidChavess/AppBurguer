@@ -1,37 +1,27 @@
-# Teste-Java-Finch-Solucoes
-Criar uma aplicação web para satisfazer as necessidades de uma startup do ramo de alimentos
+# AppBurguer :hamburger: :pizza: :beers: 
+AppBurguer é uma aplicação desenvolvida para lanchonetes e/ou comercios de alimentação de pequeno porte.
 
-# Instruções de execução
+## Objetivo :bow_and_arrow:
+- Cadastrar, listar e procurar ingredientes
+- Montar combos de lanches com os ingredientes cadastrados
+- Dependendo do combo montado tem descontos especiais
+    - PromocaoLight: Se o lanche tem alface e não tem bacon, ganha 10% de desconto
+    - PromocaoMuitaCarne: A cada 3 porções de hambúrguer o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente
+    - PromocaoMuitoQueijo: A cada 3 porções de queijo o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente
 
-Antes de seguir o passo a passo, você irá precisar ter o Java instalado no seu computador
+# Tecnologias
 
-1 - Dentro do repositório, faça o download do zip do projeto. 
+## Backend
 
-2 - Vá até o local onde você baixou o projeto e descompacte o zip
+ - Java 8
+ - Spring Boot
+ - Documentenção com Swagger
+ - Banco em memória H2
 
-3 - Dentro da pasta Teste-Java-Finch-Solucoes-master entre em backend e copie o caminho da url
+## Frontend
 
-4 - Agora abri um terminal cmd e digite o comando: cd + caminhoDaUrl, deve ficar mais ou menos assim:
-    cd C:\Users\david\Desktop\Projeto\Teste-Java-Finch-Solucoes-master\backend
-
-5 - Agora digite o seguinte comando: mvn pakage 
-
-6 - Repare que foi criado uma pasta com o nome target dentro de backend. No cmd digite cd espaço target para entrarmos na nova pasta
-    cd target
-
-7 - Dentro da pasta target tem um arquivo.jar, vamos precisar dele, portanto copie ele e dentro do cmd digite: Java -jar + nomeDoArquivo.jar, vai ficar mais ou menos assim:
-
-   Java -jar test-backend-finchsolucoes-0.0.1-SNAPSHOT.jar
-
-Se você preferir, pode copiar o código acima e colar dentro de target
-
-8 - Pronto! Isso irá levanter o servidor com nosso banco de dados e requisições prontas, foi usado o banco de dados H2, que é um banco de dados em memória, senão teriamos que também criar uma conexão com o banco de dados manualmente.
-
-9 - Agora é só navegar até a raiz do projeto, entre na pasta web, e abri a pasta index.html; 
-
-# Ferramentas utilizadas
-
-Java 8, JPA com Hibernate, Spring-Boot, 
-Banco de Dados H2, HTML5, CSS3, Javascript e Swagger para documentação da API
+ - HTML5
+ - CSS3
+ - Javascript
 
 
